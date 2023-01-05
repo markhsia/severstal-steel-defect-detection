@@ -26,6 +26,7 @@ def upload(run_directory, epochs):
 @click.option('-r', '--resume', default=None, type=str,
               help='path to latest checkpoint (default: None)')
 def train(config_filename, resume):
+    print('**train!!')
     if config_filename:
         configs = [load_config(f) for f in config_filename]
     elif resume:
@@ -34,6 +35,7 @@ def train(config_filename, resume):
         raise AssertionError('Configuration file need to be specified. '
                              'Add "-c experiments/config.yaml", for example.')
     for config in configs:
+        print('Runner')
         Runner(config).train(resume)
 
 
